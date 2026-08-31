@@ -12,8 +12,10 @@
     "db:seed": "cd backend && npm run db:seed",
     "netlify:build": "npm run build && cp -r public/* .netlify/functions/public/ 2>/dev/null || true"
   },
-  "devDependencies": {},
   "engines": {
     "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@types/node": "^26.4.0"
   }
 }
