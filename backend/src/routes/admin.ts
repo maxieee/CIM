@@ -290,7 +290,7 @@ admin.get('/export/visitors', validateQuery(exportQuerySchema), async (c) => {
 
   if (format === 'xlsx') {
     const buffer = await generateVisitorsExcel(res.rows);
-    return new Response(buffer, {
+    return new Response(buffer as unknown as BodyInit as unknown as BodyInit as unknown as BodyInit as unknown as BodyInit as unknown as BodyInit as unknown as BodyInit, {
       status: 200,
       headers: {
         'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
@@ -349,7 +349,7 @@ admin.get('/export/feedback', validateQuery(exportQuerySchema), async (c) => {
 
   if (format === 'xlsx') {
     const buffer = await generateFeedbackExcel(res.rows);
-    return new Response(buffer, {
+    return new Response(buffer as unknown as BodyInit as unknown as BodyInit as unknown as BodyInit as unknown as BodyInit as unknown as BodyInit as unknown as BodyInit, {
       status: 200,
       headers: {
         'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
@@ -385,7 +385,7 @@ admin.get('/export/engagement-report', validateQuery(exportQuerySchema), async (
 
   if (format === 'pdf') {
     const buffer = await generateEngagementReportPdf({ from: fromDate, to: toDate });
-    return new Response(buffer, {
+    return new Response(buffer as unknown as BodyInit as unknown as BodyInit as unknown as BodyInit as unknown as BodyInit as unknown as BodyInit as unknown as BodyInit, {
       status: 200,
       headers: {
         'Content-Type': 'application/pdf',
@@ -395,7 +395,7 @@ admin.get('/export/engagement-report', validateQuery(exportQuerySchema), async (
   }
 
   const buffer = await generateEngagementReportExcel({ from: fromDate, to: toDate });
-  return new Response(buffer, {
+  return new Response(buffer as unknown as BodyInit as unknown as BodyInit as unknown as BodyInit as unknown as BodyInit as unknown as BodyInit, {
     status: 200,
     headers: {
       'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
