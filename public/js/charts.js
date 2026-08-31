@@ -92,7 +92,7 @@ export function renderBengaluruChart(hostId) {
   const barW = (chartW - gap * (data.values.length - 1)) / data.values.length;
   const colors = [CHART_COLORS.rust, CHART_COLORS.teal];
 
-  const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, width: '100%', height: 'auto', role: 'img', 'aria-label': 'Bengaluru weekly email volume bar chart' });
+  const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, width: '100%', height: '100%', role: 'img', 'aria-label': 'Bengaluru weekly email volume bar chart' });
 
   for (let i = 0; i <= 4; i++) {
     const y = padT + chartH - (chartH * i / 4);
@@ -178,7 +178,7 @@ export function renderAstraChart(hostId) {
   const barH = (chartH - barGap * (data.labels.length - 1)) / data.labels.length;
   const colors = [CHART_COLORS.gold, CHART_COLORS.rust, CHART_COLORS.ok];
 
-  const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, width: '100%', height: 'auto', role: 'img', 'aria-label': 'Astra adoption by market horizontal bar chart' });
+  const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, width: '100%', height: '100%', role: 'img', 'aria-label': 'Astra adoption by market horizontal bar chart' });
 
   [0, 25, 50, 75, 100].forEach(v => {
     const x = padL + chartW * v / 100;
@@ -218,7 +218,7 @@ export function renderGenericHBar(hostId, items, opts = {}) {
   const W = padL + chartW + padR, H = padT + chartH + padB;
   const colors = opts.colors || [CHART_COLORS.teal, CHART_COLORS.gold, CHART_COLORS.rust, CHART_COLORS.ok];
 
-  const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, width: '100%', height: 'auto', role: 'img', 'aria-label': opts.ariaLabel || 'bar chart' });
+  const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, width: '100%', height: '100%', role: 'img', 'aria-label': opts.ariaLabel || 'bar chart' });
 
   items.forEach((d, i) => {
     const y = padT + i * (barH + barGap);
