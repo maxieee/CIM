@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build"
+  command = "echo Static frontend ready"
   publish = "public"
 
 [build.environment]
