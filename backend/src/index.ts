@@ -15,59 +15,92 @@ const app = new Hono();
 // Global middleware
 app.use('*', logger());
 app.use('*', secureHeaders());
-app.use('*', cors({
-  origin: env.CORS_ORIGIN,
-  allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
-  maxAge: 86400,
-}));
+app.use(
+  '*',
+  cors({
+    origin: env.CORS_ORIGIN,
+    allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+    maxAge: 86400,
+  })
+);
 
-// Simple rate limiting using in-memory store (replace with Redis in production)
-const visitorStore = new Map<string, { count: number; resetTime: number }>();
-const adminStore = new Map<string, { count: number; resetTime: number }>();
+// Simple rate limiting using in-memory store
+const visitorStore = new Map<
+  string,
+  { count: number; resetTime: number }
+>();
+
+const adminStore = new Map<
+  string,
+  { count: number; resetTime: number }
+>();
 
 const visitorLimiter = async (c: any, next: any) => {
-  const key = c.req.header('x-forwarded-for') || c.req.header('x-real-ip') || 'unknown';
+  const key =
+    c.req.header('x-forwarded-for') ||
+    c.req.header('x-real-ip') ||
+    'unknown';
+
   const now = Date.now();
   const record = visitorStore.get(key);
 
   if (!record || now > record.resetTime) {
-    visitorStore.set(key, { count: 1, resetTime: now + 60000 });
+    visitorStore.set(key, {
+      count: 1,
+      resetTime: now + 60000,
+    });
   } else if (record.count >= 30) {
     return c.json({ error: 'Rate limit exceeded' }, 429);
   } else {
     record.count++;
   }
+
   await next();
 };
 
 const adminLimiter = async (c: any, next: any) => {
-  const key = c.get('admin')?.adminId || c.req.header('x-forwarded-for') || 'unknown';
+  const key =
+    c.get('admin')?.adminId ||
+    c.req.header('x-forwarded-for') ||
+    'unknown';
+
   const now = Date.now();
   const record = adminStore.get(key);
 
   if (!record || now > record.resetTime) {
-    adminStore.set(key, { count: 1, resetTime: now + 60000 });
+    adminStore.set(key, {
+      count: 1,
+      resetTime: now + 60000,
+    });
   } else if (record.count >= 100) {
     return c.json({ error: 'Rate limit exceeded' }, 429);
   } else {
     record.count++;
   }
+
   await next();
 };
 
-// Health check (no auth, no rate limit)
-app.get('/health', (c) => c.json({ status: 'ok', timestamp: new Date().toISOString() }));
+// Health check
+app.get('/health', (c) =>
+  c.json({
+    status: 'ok',
+    timestamp: new Date().toISOString(),
+  })
+);
 
-// Public routes (visitor-facing) with visitor rate limit
+// Public routes
 app.use('/api/*', visitorLimiter);
+
 app.route('/api/auth', auth);
 app.route('/api/visitors', visitors);
 app.route('/api/content', content);
 
-// Admin routes with admin rate limit
+// Admin routes
 const adminRoutes = new Hono();
+
 adminRoutes.use('*', adminLimiter);
 adminRoutes.route('/auth', auth);
 adminRoutes.route('/admin', admin);
@@ -76,12 +109,25 @@ adminRoutes.route('/admin/content', adminContent);
 app.route('/api', adminRoutes);
 
 // 404 handler
-app.notFound((c) => c.json({ error: 'Not found' }, 404));
+app.notFound((c) =>
+  c.json(
+    {
+      error: 'Not found',
+    },
+    404
+  )
+);
 
 // Error handler
 app.onError((err, c) => {
   console.error('Server error:', err);
-  return c.json({ error: 'Internal server error' }, 500);
+
+  return c.json(
+    {
+      error: 'Internal server error',
+    },
+    500
+  );
 });
 
 // Graceful shutdown
@@ -97,10 +143,19 @@ process.on('SIGTERM', async () => {
   process.exit(0);
 });
 
-// Start server
-serve({
-  fetch: app.fetch,
-  port: env.PORT,
-}, (info) => {
-  console.log(`Server running on http://localhost:${info.port}`);
-});
+// Start local Node server
+serve(
+  {
+    fetch: app.fetch,
+    port: env.PORT,
+  },
+  (info) => {
+    console.log(
+      `Server running on http://localhost:${info.port}`
+    );
+  }
+);
+
+// IMPORTANT:
+// Netlify Functions imports the Hono app as the default export.
+export default app;
