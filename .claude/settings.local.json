@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/shree/OneDrive/Desktop/OneDrive/Maxiee/portfolio 3/mahamithraa-cinematic-portfolio/**)",
+      "Bash(npm run *)",
+      "WebSearch",
+      "WebFetch(domain:api.github.com)",
+      "WebFetch(domain:gireesh.tech)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(npx tsc *)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(curl -s http://localhost:3001)",
+      "Bash(curl *)",
+      "Bash(cp \"C:\\\\Users\\\\shree\\\\OneDrive\\\\Desktop\\\\OneDrive\\\\Maxiee\\\\portfolio 3\\\\Photos\\\\aigpe.png\" \"C:\\\\Users\\\\shree\\\\OneDrive\\\\Desktop\\\\OneDrive\\\\Maxiee\\\\portfolio 3\\\\mahamithraa-cinematic-portfolio\\\\public\\\\images\\\\issuers\\\\aigpe.png\")",
+      "Bash(cp \"C:\\\\Users\\\\shree\\\\OneDrive\\\\Desktop\\\\OneDrive\\\\Maxiee\\\\portfolio 3\\\\Photos\\\\google.png\" \"C:\\\\Users\\\\shree\\\\OneDrive\\\\Desktop\\\\OneDrive\\\\Maxiee\\\\portfolio 3\\\\mahamithraa-cinematic-portfolio\\\\public\\\\images\\\\issuers\\\\google.png\")",
+      "Bash(cp \"C:\\\\Users\\\\shree\\\\OneDrive\\\\Desktop\\\\OneDrive\\\\Maxiee\\\\portfolio 3\\\\Photos\\\\rutgers.png\" \"C:\\\\Users\\\\shree\\\\OneDrive\\\\Desktop\\\\OneDrive\\\\Maxiee\\\\portfolio 3\\\\mahamithraa-cinematic-portfolio\\\\public\\\\images\\\\issuers\\\\rutgers.png\")",
+      "Bash(cp \"C:\\\\Users\\\\shree\\\\OneDrive\\\\Desktop\\\\OneDrive\\\\Maxiee\\\\portfolio 3\\\\Photos\\\\cfi.png\" \"C:\\\\Users\\\\shree\\\\OneDrive\\\\Desktop\\\\OneDrive\\\\Maxiee\\\\portfolio 3\\\\mahamithraa-cinematic-portfolio\\\\public\\\\images\\\\issuers\\\\cfi.png\")",
+      "Bash(cp \"C:\\\\Users\\\\shree\\\\OneDrive\\\\Desktop\\\\OneDrive\\\\Maxiee\\\\portfolio 3\\\\Photos\\\\macquarie.png\" \"C:\\\\Users\\\\shree\\\\OneDrive\\\\Desktop\\\\OneDrive\\\\Maxiee\\\\portfolio 3\\\\mahamithraa-cinematic-portfolio\\\\public\\\\images\\\\issuers\\\\macquarie.png\")",
+      "Bash(cp \"C:\\\\Users\\\\shree\\\\OneDrive\\\\Desktop\\\\OneDrive\\\\Maxiee\\\\portfolio 3\\\\Photos\\\\projects.png\" \"C:\\\\Users\\\\shree\\\\OneDrive\\\\Desktop\\\\OneDrive\\\\Maxiee\\\\portfolio 3\\\\mahamithraa-cinematic-portfolio\\\\public\\\\images\\\\icons\\\\projects.png\")",
+      "Bash(cp \"C:\\\\Users\\\\shree\\\\OneDrive\\\\Desktop\\\\OneDrive\\\\Maxiee\\\\portfolio 3\\\\Photos\\\\years.png\" \"C:\\\\Users\\\\shree\\\\OneDrive\\\\Desktop\\\\OneDrive\\\\Maxiee\\\\portfolio 3\\\\mahamithraa-cinematic-portfolio\\\\public\\\\images\\\\icons\\\\years.png\")",
+      "Bash(cp \"C:\\\\Users\\\\shree\\\\OneDrive\\\\Desktop\\\\OneDrive\\\\Maxiee\\\\portfolio 3\\\\Photos\\\\countries.png\" \"C:\\\\Users\\\\shree\\\\OneDrive\\\\Desktop\\\\OneDrive\\\\Maxiee\\\\portfolio 3\\\\mahamithraa-cinematic-portfolio\\\\public\\\\images\\\\icons\\\\countries.png\")",
+      "Bash(cp \"C:\\\\Users\\\\shree\\\\OneDrive\\\\Desktop\\\\OneDrive\\\\Maxiee\\\\portfolio 3\\\\Photos\\\\satisfaction.png\" \"C:\\\\Users\\\\shree\\\\OneDrive\\\\Desktop\\\\OneDrive\\\\Maxiee\\\\portfolio 3\\\\mahamithraa-cinematic-portfolio\\\\public\\\\images\\\\icons\\\\satisfaction.png\")",
+      "Bash(npm ls *)",
+      "Bash(npm install *)"
+    ]
+  }
+}

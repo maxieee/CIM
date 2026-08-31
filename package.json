@@ -1,0 +1,19 @@
+{
+  "name": "cim-dashboard",
+  "version": "1.0.0",
+  "description": "CIM Internship Dashboard - Production Ready",
+  "private": true,
+  "scripts": {
+    "build": "cd backend && npm run build",
+    "dev": "cd backend && npm run dev",
+    "lint": "cd backend && npm run lint",
+    "test": "cd backend && npm run test",
+    "db:migrate": "cd backend && npm run db:migrate",
+    "db:seed": "cd backend && npm run db:seed",
+    "netlify:build": "npm run build && cp -r public/* .netlify/functions/public/ 2>/dev/null || true"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
