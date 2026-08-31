@@ -1,4 +1,4 @@
-﻿// Admin panel functionality â€” uses backend API
+﻿// Admin panel functionality — uses backend API
 import * as api from './api.js';
 import { getContent, updateContent, resetContent, getStats, getVisitors, getVisitorTimeline, deleteVisitor, bulkDeleteVisitors, getFeedback, deleteFeedback, exportData, generateEngagementReport } from './api.js';
 import {
@@ -70,7 +70,7 @@ async function renderStats() {
       projContainer.innerHTML = stats.projects.map(p => `
         <div class="index-card" style="border-left-color:var(--gold)">
           <div class="num" style="font-size:24px;">${p.views}</div>
-          <span class="label">${p.project} Â· ${p.unique_visitors} uniq</span>
+          <span class="label">${p.project} · ${p.unique_visitors} uniq</span>
         </div>
       `).join('');
     }
@@ -79,7 +79,7 @@ async function renderStats() {
     const secContainer = $('admin-top-sections');
     if (secContainer && stats.topSections.length > 0) {
       secContainer.innerHTML = stats.topSections.map(s => `
-        <li><span class="n">Â·</span><span>${esc(s.section)} â€” ${s.views} views (${s.unique_visitors} unique)</span></li>
+        <li><span class="n">·</span><span>${esc(s.section)} — ${s.views} views (${s.unique_visitors} unique)</span></li>
       `).join('');
     }
 
@@ -87,7 +87,7 @@ async function renderStats() {
     const fbContainer = $('admin-feedback-summary');
     if (fbContainer && stats.feedbackSummary.length > 0) {
       fbContainer.innerHTML = stats.feedbackSummary.map(f => `
-        ${'â˜…'.repeat(f.rating)}${'â˜†'.repeat(5 - f.rating)}: ${f.count} responses
+        ${'★'.repeat(f.rating)}${'☆'.repeat(5 - f.rating)}: ${f.count} responses
       `).join('<br>');
     }
   } catch (e) {
@@ -122,7 +122,7 @@ async function renderAdminRecords() {
       fb.innerHTML = feedbackRes.feedback.map(r => `
         <tr>
           <td>${esc(r.name)}</td>
-          <td><span class="stars-static">${'â˜…'.repeat(Number(r.rating) || 0)}</span></td>
+          <td><span class="stars-static">${'★'.repeat(Number(r.rating) || 0)}</span></td>
           <td>${esc(r.comment || '')}</td>
           <td>${esc(fmtTime(r.created_at))}</td>
           <td><button class="btn btn-danger btn-sm" onclick="deleteAdminRecord('feedback','${esc(r.id)}')">Delete</button></td>
@@ -143,16 +143,16 @@ function renderPagination() {
   // Simple prev/next
   if (vp) {
     vp.innerHTML = `
-      <button class="btn btn-ghost btn-sm" ${currentVisitorPage === 1 ? 'disabled' : ''} onclick="changeVisitorPage(-1)">â† Prev</button>
+      <button class="btn btn-ghost btn-sm" ${currentVisitorPage === 1 ? 'disabled' : ''} onclick="changeVisitorPage(-1)">← Prev</button>
       <span style="margin:0 12px;">Page ${currentVisitorPage}</span>
-      <button class="btn btn-ghost btn-sm" onclick="changeVisitorPage(1)">Next â†’</button>
+      <button class="btn btn-ghost btn-sm" onclick="changeVisitorPage(1)">Next →</button>
     `;
   }
   if (fp) {
     fp.innerHTML = `
-      <button class="btn btn-ghost btn-sm" ${currentFeedbackPage === 1 ? 'disabled' : ''} onclick="changeFeedbackPage(-1)">â† Prev</button>
+      <button class="btn btn-ghost btn-sm" ${currentFeedbackPage === 1 ? 'disabled' : ''} onclick="changeFeedbackPage(-1)">← Prev</button>
       <span style="margin:0 12px;">Page ${currentFeedbackPage}</span>
-      <button class="btn btn-ghost btn-sm" onclick="changeFeedbackPage(1)">Next â†’</button>
+      <button class="btn btn-ghost btn-sm" onclick="changeFeedbackPage(1)">Next →</button>
     `;
   }
 }
@@ -214,7 +214,7 @@ function renderVisitorTimeline(data) {
       <h3 style="margin-top:24px;">Feedback</h3>
       ${feedback.map(f => `
         <div class="card" style="padding:16px;margin-bottom:12px;">
-          <div class="stars-static">${'â˜…'.repeat(Number(f.rating) || 0)}</div>
+          <div class="stars-static">${'★'.repeat(Number(f.rating) || 0)}</div>
           <p>${esc(f.comment || '(no comment)')}</p>
           <small style="color:var(--ink-soft);">${esc(fmtTime(f.created_at))}</small>
         </div>
@@ -290,7 +290,7 @@ export async function saveContent() {
     const msg = $('save-msg');
     msg.classList.add('show');
     setTimeout(() => msg.classList.remove('show'), 2500);
-    toast('Dashboard content updated â€” live for every viewer.');
+    toast('Dashboard content updated — live for every viewer.');
   } catch (e) {
     toast('Failed to save content.');
   }

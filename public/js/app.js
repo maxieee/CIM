@@ -1,4 +1,4 @@
-﻿// Main application logic â€” visitor-facing + navigation + feedback
+﻿// Main application logic — visitor-facing + navigation + feedback
 import * as api from './api.js';
 import { adminLogin, adminLogout, viewVisitor, saveContent, resetContentAll, exportVisitors, exportFeedback, exportReport, changeVisitorPage, changeFeedbackPage, deleteAdminRecord, deleteAllVisitorLogs } from './admin.js';
 import { renderAllCharts, renderAllChartsP2 } from './charts.js';
