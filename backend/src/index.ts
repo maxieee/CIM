@@ -144,17 +144,13 @@ process.on('SIGTERM', async () => {
 });
 
 // Start local Node server
-serve(
-  {
-    fetch: app.fetch,
-    port: env.PORT,
-  },
-  (info) => {
-    console.log(
-      `Server running on http://localhost:${info.port}`
-    );
-  }
-);
+serve({
+  fetch: app.fetch,
+  port: env.PORT,
+  hostname: '0.0.0.0',
+}, (info) => {
+  console.log(`Server running on http://${info.address}:${info.port}`);
+});
 
 // IMPORTANT:
 // Netlify Functions imports the Hono app as the default export.
