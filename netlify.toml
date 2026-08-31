@@ -5,6 +5,26 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# Proxy API requests to Render backend
+[[redirects]]
+  from = "/api/*"
+  to = "https://cim-backend-ss5u.onrender.com/api/:splat"
+  status = 200
+  force = true
+
+# Proxy health check
+[[redirects]]
+  from = "/health"
+  to = "https://cim-backend-ss5u.onrender.com/health"
+  status = 200
+  force = true
+
+# SPA fallback
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
 # Security headers
 [[headers]]
   for = "/*"
@@ -15,8 +35,3 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
     Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://*.supabase.co https://cim-backend-ss5u.onrender.com"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
