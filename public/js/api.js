@@ -4,7 +4,7 @@
 const API_BASE =
   window.location.hostname === 'localhost'
     ? 'http://localhost:3000/api'
-    : '/api';
+    : 'https://cim-backend-ss5u.onrender.com/api';
 
 let adminToken = null; // In memory only, never localStorage
 
